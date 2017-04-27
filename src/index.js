@@ -1,7 +1,28 @@
-// import RelayLocalSchema from 'relay-local-schema';
-//
-// import schema from './schema';
-//
-// Relay.injectNetworkLayer(
-//   new RelayLocalSchema.NetworkLayer({ schema })
-// );
+import {
+  GraphQLInt,
+  GraphQLFloat,
+  GraphQLString,
+  GraphQLList,
+  GraphQLObjectType,
+  GraphQLEnumType,
+  GraphQLNonNull,
+  GraphQLSchema,
+  graphql
+} from 'graphql';
+
+import Schema from './schema';
+
+let query = `
+  {
+    allPeople {
+      firstName
+      friends {
+        email
+      }
+    }
+  }
+`;
+
+graphql(Schema, query).then(function(result) {
+  console.log(result.data);
+});
