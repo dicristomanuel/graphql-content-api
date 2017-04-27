@@ -1,0 +1,18 @@
+{
+  "name": "content-api-graphql-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-relay-plugin": "^0.10.0",
+    "graphql": "^0.9.3",
+    "react": "^15.5.4",
+    "react-relay": "^0.10.0",
+    "relay-local-schema": "^0.5.5"
+  }
+}
