@@ -1,28 +1,21 @@
-import {
-  GraphQLInt,
-  GraphQLFloat,
-  GraphQLString,
-  GraphQLList,
-  GraphQLObjectType,
-  GraphQLEnumType,
-  GraphQLNonNull,
-  GraphQLSchema,
-  graphql
-} from 'graphql';
+import { graphql } from 'graphql';
 
 import Schema from './schema';
+import personLoader from './type/personLoader';
+
+const loaders = {
+  person: personLoader,
+}
 
 let query = `
-  {
-    allPeople {
-      firstName
-      friends {
-        email
-      }
-    }
+{
+  person(id: "0110") {
+    id
+    firstName
   }
+}
 `;
 
-graphql(Schema, query).then(function(result) {
-  console.log(result.data);
+graphql(Schema, query, null, loaders).then(function(result) {
+  console.log(result);
 });

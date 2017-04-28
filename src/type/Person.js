@@ -12,6 +12,7 @@ const Person = new GraphQLObjectType({
   name: 'Person',
   description: 'Represent Person',
   fields: () => ({
+    id: globalIdField('Person'),
     firstName: {
       type: GraphQLString,
       resolve: person => person.first_name,
@@ -21,14 +22,15 @@ const Person = new GraphQLObjectType({
       resolve: person => person.last_name,
     },
     email: {type: GraphQLString},
-    id: globalIdField('Person'),
     username: {type: GraphQLString},
     friends: {
       type: new GraphQLList(Person),
-      resolve: person => person.friends.map(fetchPersonByURL),
+      resolve: (person, args, loaders) => {
+        return loaders.person.loadMany(person.friends)
+      }
     }
   }),
-  interfaces: [ nodeInterface ],
+  // interfaces: [ nodeInterface ],
 });
 
 export default Person;

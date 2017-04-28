@@ -11,6 +11,7 @@ import PersonType from './Person';
 const Query = new GraphQLObjectType({
   name: 'Root',
   fields: () => ({
+    // node: nodeField,
     echo: {
       type: GraphQLString,
       args: {
@@ -24,11 +25,12 @@ const Query = new GraphQLObjectType({
       type: new GraphQLList(PersonType),
       resolve: fetchPeople,
     },
-    node: nodeField,
     person: {
       type: PersonType,
       args: {id: { type: GraphQLString }},
-      resolve: (root, args) => fetchPersonByURL(`/people/${args.id}/`),
+      resolve: (root, {id}, {person}) => {
+        return person.load(`/people/${id}/`)
+      }
     },
   }),
 });
