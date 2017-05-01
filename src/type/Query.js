@@ -5,13 +5,11 @@ import {
 } from 'graphql';
 
 import { fetchPeople, fetchPersonByURL } from '../api';
-import { nodeField } from './PersonNode';
 import PersonType from './Person';
 
 const Query = new GraphQLObjectType({
   name: 'Root',
   fields: () => ({
-    // node: nodeField,
     echo: {
       type: GraphQLString,
       args: {

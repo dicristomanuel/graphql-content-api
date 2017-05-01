@@ -4,15 +4,13 @@ import {
   GraphQLString,
 } from 'graphql';
 
-import { globalIdField } from 'graphql-relay';
-import { nodeInterface } from './PersonNode';
 import { fetchPersonByURL } from '../api';
 
 const Person = new GraphQLObjectType({
   name: 'Person',
   description: 'Represent Person',
   fields: () => ({
-    id: globalIdField('Person'),
+    id: {type: GraphQLString},
     firstName: {
       type: GraphQLString,
       resolve: person => person.first_name,
@@ -30,7 +28,6 @@ const Person = new GraphQLObjectType({
       }
     }
   }),
-  // interfaces: [ nodeInterface ],
 });
 
 export default Person;
