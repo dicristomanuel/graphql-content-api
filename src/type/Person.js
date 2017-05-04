@@ -3,7 +3,6 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
-
 import { fetchPersonByURL } from '../api';
 
 const Person = new GraphQLObjectType({

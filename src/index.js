@@ -1,7 +1,6 @@
 import { graphql } from 'graphql';
-
 import Schema from './schema';
-import personLoader from './type/personLoader';
+import personLoader from './loaders/personLoader';
 import fragments from './fragments';
 
 const loaders = {

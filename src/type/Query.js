@@ -3,22 +3,12 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
-
 import { fetchPeople, fetchPersonByURL } from '../api';
 import PersonType from './Person';
 
 const Query = new GraphQLObjectType({
   name: 'Root',
   fields: () => ({
-    echo: {
-      type: GraphQLString,
-      args: {
-        message: { type: GraphQLString },
-      },
-      resolve: ((root, {message}) => {
-        return `You're saying ${message}`;
-      })
-    },
     allPeople: {
       type: new GraphQLList(PersonType),
       resolve: fetchPeople,

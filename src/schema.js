@@ -1,7 +1,4 @@
-import {
-  GraphQLSchema,
-} from 'graphql';
-
+import { GraphQLSchema } from 'graphql';
 import QueryType from './type/Query';
 import PersonType from './type/Person';
 

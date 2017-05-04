@@ -1,12 +1,12 @@
 export default `
 {
-  person (id: "0110") {
+  allPeople {
     firstName
+    lastName
+    username
+    email
     friends {
       firstName
-      friends {
-        email
-      }
     }
   }
 }
